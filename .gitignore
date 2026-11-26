@@ -232,3 +232,5 @@ __marimo__/
 .env
 *-key.json
 credentials.json
+# Donn�es locales
+data/
