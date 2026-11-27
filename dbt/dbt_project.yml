@@ -1,0 +1,11 @@
+name: velib_paris
+version: "1.0.0"
+profile: velib_paris
+
+model-paths: ["models"]
+
+models:
+  velib_paris:
+    +materialized: table   # chaque modèle devient une vraie table dans BigQuery
+    +state:
+      lag_tolerance: 1m    # reconstruire dès qu'il y a de nouvelles données (au lieu de 45 min)
