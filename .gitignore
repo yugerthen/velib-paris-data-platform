@@ -234,3 +234,9 @@ __marimo__/
 credentials.json
 # Donn�es locales
 data/
+
+# dbt
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+dbt/.user.yml

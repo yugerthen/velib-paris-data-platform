@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: dim_station
+    description: "Dimension station : une ligne par station Velib"
+    columns:
+      - name: station_id
+        description: "Identifiant unique de la station"
+        data_tests:
+          - unique              # pas de doublon
+          - not_null            # jamais vide
+      - name: nom_station
+        description: "Nom de la station"
+        data_tests:
+          - not_null
+
+  - name: dim_temps
+    description: "Dimension temps : une ligne par collecte, a l'heure de Paris"
+    columns:
+      - name: horodatage_collecte
+        description: "Heure de la collecte (UTC)"
+        data_tests:
+          - unique
+          - not_null
+      - name: jour_semaine
+        description: "Jour de la semaine en francais"
+        data_tests:
+          - accepted_values:    # seulement ces valeurs sont autorisees
+              arguments:
+                values: ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
+
+  - name: fct_disponibilites
+    description: "Faits : etat de chaque station a chaque collecte"
+    columns:
+      - name: station_id
+        description: "Lien vers dim_station"
+        data_tests:
+          - not_null
+          - relationships:      # chaque station des faits doit exister dans dim_station
+              arguments:
+                to: ref('dim_station')
+                field: station_id
+      - name: horodatage_collecte
+        description: "Lien vers dim_temps"
+        data_tests:
+          - not_null
+          - relationships:      # chaque collecte des faits doit exister dans dim_temps
+              arguments:
+                to: ref('dim_temps')
+                field: horodatage_collecte
+
+  - name: indicateurs_par_heure
+    description: "Pourcentage de stations vides et pleines par heure, pret pour Power BI"

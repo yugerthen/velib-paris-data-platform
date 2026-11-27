@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: silver
+    schema: silver
+    description: "Données nettoyées par PySpark"
+    tables:
+      - name: disponibilites
+      - name: stations

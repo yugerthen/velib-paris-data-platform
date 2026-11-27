@@ -24,7 +24,7 @@ BigQuery · Cloud Storage · Dataproc (PySpark) · Eventarc · Workflows · Clou
 - [x] Phase 1 : Bronze
 - [x] Phase 2 : Silver
 - [ ] Phase 3 : automatisation
-- [ ] Phase 4 : Gold
+- [x] Phase 4 : Gold
 - [ ] Phase 5 : données en direct
 - [ ] Phase 6 : orchestration
 - [ ] Phase 7 : BI et documentation

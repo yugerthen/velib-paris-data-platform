@@ -1,0 +1,10 @@
+velib_paris:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth                    # utilise ta connexion gcloud (aucun mot de passe dans le fichier)
+      project: velib-paris-yugerthen
+      dataset: gold                    # les modèles seront créés dans le dataset gold
+      location: europe-west9           # Paris
+      threads: 4
